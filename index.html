@@ -738,7 +738,7 @@ function playAudioQueue(queue) {
     let idx = 0; function speakNext() {
         if (!isPlaying || idx >= queue.length) { isPlaying = false; updatePlayButton(); clearHighlights(); if (isAutoPlay && !isDictationMode) setTimeout(nextWord, 1500); return; }
         const currentItem = queue[idx]; const utterance = new SpeechSynthesisUtterance(currentItem.text);
-        utterance.lang = currentItem.type === 'chinese' ? 'zh-CN' : 'en-US'; utterance.rate = currentItem.type === 'letter' || currentItem.type === 'syllable' ? 0.7 : 0.85;
+        utterance.lang = currentItem.type === 'chinese' ? 'zh-CN' : 'en-US'; utterance.rate = currentItem.type === 'letter' || currentItem.type === 'syllable' ? 0.8 : 0.75;
         syncHighlight(currentItem); utterance.onend = () => { idx++; setTimeout(speakNext, 300); }; window.speechSynthesis.speak(utterance);
     } speakNext();
 }
